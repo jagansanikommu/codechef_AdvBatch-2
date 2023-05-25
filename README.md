@@ -22,7 +22,7 @@ git clone https://github.com/jagansanikommu/codechef_data.git
 2. Change into the project directory.
 
 ```bash
-cd codechef-student-data-app
+cd codechef_data-main
 ```
 
 3. Install the required dependencies.
