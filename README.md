@@ -75,4 +75,3 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Feel free to customize the content above to better suit your project. Provide accurate information about your application and its functionalities.
