@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <title>JaganS</title>
+</head>
+
+<body>
+  <section class="course">
+    <nav>
+      <div class="nav-links" id="navLinks">
+        <i class="fa fa-times" onclick="hideMenu()"></i>
+        
+        <ul>
+          <li><a href="home">HOME</a></li>
+          <li><a href="about">ABOUT</a></li>
+          <li><a href="works">WORKS</a></li>
+          <li><a href="resume">RESUME</a></li>
+        <li><a href="contact">CONTACT</a></li>
+        </ul>
+      </div>
+      <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+    
+    <h1>About</h1>
+    
+
+
+  </section>
+
+
+
+
+
+
+
+
+
+  
+  <script>
+
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+      navLinks.style.right = "0";
+    }
+    function hideMenu() {
+      navLinks.style.right = "-200px";
+    }  
+  </script>
+
+</body>
+
+</html>

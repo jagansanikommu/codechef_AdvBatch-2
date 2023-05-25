@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<body>
+    <section class="course">
+        <nav>
+          <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            
+            <ul>
+              <li><a href="home">HOME</a></li>
+              <li><a href="about">ABOUT</a></li>
+              <li><a href="works">WORKS</a></li>
+              <li><a href="resume">RESUME</a></li>
+            <li><a href="contact">CONTACT</a></li>
+            </ul>
+          </div>
+          <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+      
+    <form action="/codechef" method="post">
+        <select name="batch" id="batch" type="btn">
+            <option value="1">--Please choose a Batch--</option>
+                <optgroup label="Adv_Batches">
+                <option value="adv_batch_2">Adv_Batch-2</option>
+                <option value="adv_Batch_1">Adv_Batch-1</option>
+            </optgroup>
+            <optgroup label="Cse-3rd year">
+                <option value="aiml">CSE-AIML</option>
+                <option value="ds"  >CSE-DS</option>
+                <option value="cse_a">CSE-A</option>
+                <option value="cse_b">CSE-B</option>
+                <option value="cse_c">CSE-C</option>
+            </optgroup>
+            <optgroup label="Ece-3rd year">
+                <option value="ece_a">ECE-A</option>
+                <option value="ece_b">ECE-B</option>
+                <option value="ece_c">ECE-C</option>
+            </optgroup>
+        </select>
+        <input type="submit" name="btn" value="Show">
+    <br>
+      <input placeholder="passcode" name="passcode" type="password">
+      <input type="submit" name="btn" value="Update">
+  </form>
+    {% if error %}
+    <p style="color:red">{{ error }}</p>
+    {% endif %}
+    <br>
+    {% if data %}
+    <table>
+		<thead>
+			<tr>
+				<th>Username</th>
+				<th>Previous Week</th>
+				<th>Recent Week</th>
+        <th>Count</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			{% for row in data %}
+      <tr {% if 15 <= row[5] %} 
+          style="background-color:rgb(118, 226, 110)"
+          {% endif %} >
+				<td>{{ row[1] }}</td>
+				<td>{{ row[3] }}</td>
+				<td>{{ row[4] }}</td>
+				<td 
+          > {{row[5]}}</td>
+        </tr>
+			{% endfor %}
+		</tbody>
+	</table>
+    {% endif %}
+</section>
+
+
+<script>
+
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+      navLinks.style.right = "0";
+    }
+    function hideMenu() {
+      navLinks.style.right = "-200px";
+    }  
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{url_for('static', filename = 'codechef.css')}}" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+    <title>Codechef Data</title>
+</head>
+  <body>
+    <section>
+    <form action="/codechef_data" method="post">
+        <div class="container">
+        <select name="batch" id="batch" type="btn" class="custom-select">
+                <option value="1">Choose the Batch</option>
+                    <optgroup label="Adv_Batches">
+                    <option value="adv_batch_2">Adv_Batch-2</option>
+                    <option value="adv_Batch_1">Adv_Batch-1</option>
+                </optgroup>
+                <optgroup label="Cse-3rd year">
+                    <option value="aiml">CSE-AIML</option>
+                    <option value="ds"  >CSE-DS</option>
+                    <option value="cse_a">CSE-A</option>
+                    <option value="cse_b">CSE-B</option>
+                    <option value="cse_c">CSE-C</option>
+                </optgroup>
+                <optgroup label="Ece-3rd year">
+                    <option value="ece_a">ECE-A</option>
+                    <option value="ece_b">ECE-B</option>
+                    <option value="ece_c">ECE-C</option>
+                </optgroup>
+            </select>
+            <input type="submit" name="btn" value="Show" class="custom-select">
+        </div>
+      </form>
+      
+        {% if error %}
+        <p style="color:red">{{ error }}</p>
+        {% endif %}
+        
+        {% if data %}
+        <div class="container">
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Previous Week</th>
+              <th>Recent Week</th>
+              <th>Count <button onclick="sortTable()">Sort</button></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in data %}
+            <tr {% if 20 <= row[5] %} 
+                style="background-color:rgba(70, 249, 88, 0.507)"
+                {% endif %} >
+              <td>{{ row[1] }}</td>
+              <td>{{ row[3] }}</td>
+              <td>{{ row[4] }}</td>
+              <td>{{ row[5] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        </div>
+        {% endif %}     
+    </section>
+    <script>
+      function sortTable() {
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("data-table");
+        switching = true;
+        while (switching) {
+          switching = false;
+          rows = table.rows;
+          for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[3];
+            y = rows[i + 1].getElementsByTagName("TD")[3];
+            if (Number(x.innerHTML) < Number(y.innerHTML)) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+          if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+          }
+        }
+      }
+    </script>
+</body>
+</html>
